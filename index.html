@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة المنتج</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 40px;
+        }
+
+        .image-box {
+            background-color: #ddd;
+            height: auto;
+            width: 100%;
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .form-container {
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-tag {
+            text-align: center;
+            font-size: 2.5em;
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .offers {
+            margin: 20px 0;
+        }
+
+        .offer-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .offer-option:hover {
+            border-color: #e74c3c;
+            background-color: #fff5f5;
+        }
+
+        .offer-option.selected {
+            border-color: #e74c3c;
+            background-color: #fff5f5;
+        }
+
+        .offer-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .offer-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .offer-price {
+            color: #e74c3c;
+        }
+
+        .offer-details {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .phone-format {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: -5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+            .best-offer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ffeb3b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #333;
+    }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="product-images">
+            <div class="image-box"><img src="https://cdn.youcan.shop/stores/64238ee726e14135fdfb91b9714b31da/others/N1vwi6DH2UPJO2ELdbP49g4k2XCNliyyfIgXY4hs.jpg" alt="صورة المنتج 1"></div>
+            <div class="image-box"><img src="https://cdn.youcan.shop/stores/64238ee726e14135fdfb91b9714b31da/products/fFhnlz9qgllN3GWT6cxuKW6q5L6pQD0n6u0j3bir.webp" alt="صورة المنتج 2"></div>
+            <div class="image-box"><img src="https://cdn.youcan.shop/stores/64238ee726e14135fdfb91b9714b31da/products/yNWWk6UB6LUYo8aycuBEaJ3buirs0whmxcZttn31.webp" alt="صورة المنتج 3"></div>
+        </div>
+
+        <div class="form-container">
+            <div class="price-tag" id="selectedPrice">1900 دج</div>
+
+            <div class="offers">
+                <div class="offer-option selected" data-price="1900 دج">
+                    <input type="radio" name="offer" id="offer1" value="1" checked>
+                    <label class="offer-label" for="offer1">
+                        <span>قطعة واحدة</span>
+                        <span class="offer-price">1900 دج</span>
+                    </label>
+                    <div class="offer-details">السعر الأساسي</div>
+                </div>
+
+                <div class="offer-option" data-price="3800 دج">
+                    <input type="radio" name="offer" id="offer2" value="2">
+                    <label class="offer-label" for="offer2">
+                        <span>قطعتين</span>
+                        <span class="offer-price">3800 دج</span>
+                    </label>
+                    <div class="offer-details"><span class="free-shipping">✓ توصيل مجاني</span></div>
+                    <div class="best-offer">أفضل عرض!</div> <!-- هنا أضفنا شارة العرض الأفضل -->
+                </div>
+
+                <div class="offer-option" data-price="4700 دج">
+                    <input type="radio" name="offer" id="offer3" value="3">
+                    <label class="offer-label" for="offer3">
+                        <span>3 قطع</span>
+                        <span class="offer-price">4700 دج</span>
+                    </label>
+                    <div class="offer-details"><span class="discount">✓ تخفيض 1000 دج</span></div>
+                </div>
+            </div>
+
+            <form id="orderForm" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <div class="phone-format" id="phoneFormat">مثل: 05 55 55 55 55</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="wilaya">الولاية:</label>
+                    <select id="wilaya" name="wilaya" required>
+                        <option value="">اختر الولاية</option>
+                        <option value="1">الجزائر</option>
+                        <option value="2">وهران</option>
+                        <option value="3">قسنطينة</option>
+                        <option value="4">سطيف</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="commune">البلدية:</label>
+                    <select id="commune" name="commune" required>
+                        <option value="">اختر البلدية</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" id="buyBtn">اشتري الآن - <span id="finalPrice">1900
+                        دج</span></button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^0[567][0-9]{8}$/;
+
+            if (!phoneRegex.test(phone)) {
+                alert('الرجاء إدخال رقم هاتف صحيح');
+                return false;
+            }
+
+            return true;
+        }
+
+        document.getElementById('wilaya').addEventListener('change', function () {
+            const communeSelect = document.getElementById('commune');
+            communeSelect.innerHTML = '<option value="">اختر البلدية</option>';
+
+            if (this.value === '1') {
+                const communes = ['باب الوادي', 'القبة', 'حسين داي'];
+                communes.forEach(commune => {
+                    const option = document.createElement('option');
+                    option.value = commune;
+                    option.textContent = commune;
+                    communeSelect.appendChild(option);
+                });
+            }
+        });
+
+        document.querySelectorAll('.offer-option').forEach(option => {
+            option.addEventListener('click', function () {
+                document.querySelectorAll('.offer-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+
+                const price = this.getAttribute('data-price');
+                document.getElementById('selectedPrice').textContent = price;
+                document.getElementById('finalPrice').textContent = price;
+            });
+        });
+
+        document.getElementById('phone').addEventListener('input', function () {
+            this.value = this.value.replace(/(\d{2})(\d{3})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
+        });
+    </script>
+</body>
+
+</html>
